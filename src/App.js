@@ -1,18 +1,21 @@
 import "./css/App.css";
 import UserTitle from "./components/UserTitle";
+import ReposList from "./components/ReposList";
 import styled from "styled-components";
+import { DataProvider } from "./Context";
 
-const Home = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
+const Home = styled.div`
+  width: 100%;
 `;
 
 function App() {
   return (
-    <Home>
-      <UserTitle></UserTitle>
-    </Home>
+    <DataProvider>
+      <Home>
+        <UserTitle></UserTitle>
+        <ReposList></ReposList>
+      </Home>
+    </DataProvider>
   );
 }
 
