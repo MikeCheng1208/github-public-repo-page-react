@@ -76,12 +76,7 @@ function ReposList() {
           <CardItem key={item.id}>
             <CardTitle>{item.name}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
-            <CardLink
-              className="url"
-              rel="noreferrer"
-              href={item.html_url}
-              target="_blank"
-            >
+            <CardLink rel="noreferrer" href={item.html_url} target="_blank">
               {item.html_url}
             </CardLink>
             <StarBox>
