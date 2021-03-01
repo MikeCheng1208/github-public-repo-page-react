@@ -1,8 +1,10 @@
 # github-public-repo-page-react
 
-透過 `create-react-app` 起新專案，使用 `React Hooks` 拆分邏輯及組件，並使用 `styled-components` 處理 `css` 樣式完成該專案。
-
-非同步的處理使用 `axios` 
+ - 透過 `create-react-app` 起新專案
+ - 使用 `React Hooks` 拆分邏輯及組件
+ - 使用 `styled-components` 處理 `css` 樣式
+ - 非同步的處理使用 `axios` 
+ - 此專案覺得使用 `context` 比 `redux` 來的更適合，故此專案並沒有導入 `redux`
 
 ---
 
