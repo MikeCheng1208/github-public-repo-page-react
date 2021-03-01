@@ -5,15 +5,15 @@ import checkMark from "../../assets/check-mark.svg";
 import cancelButton from "../../assets/cancel-button.svg";
 import context from "../../Context";
 
-const UserTitleWrapper = styled.div`
-  > img {
-    display: block;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 65px auto 20px auto;
-    border: 5px solid #fff;
-  }
+const UserTitleWrapper = styled.div``;
+
+const AvatarImg = styled.img`
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 65px auto 20px auto;
+  border: 5px solid #fff;
 `;
 
 const EditBox = styled.div`
@@ -22,36 +22,39 @@ const EditBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  > h1 {
-    display: block;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    font-size: 25px;
-    text-align: center;
-  }
-  > input {
-    width: 100%;
-    height: 30px;
-    padding-left: 5px;
-    font-size: 18px;
-  }
 `;
 
-const EditBtn = styled.div`
+const EditName = styled.h1`
+  display: block;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  font-size: 25px;
+  text-align: center;
+`;
+const EditInput = styled.input`
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  font-size: 18px;
+`;
+
+const EditBtnBox = styled.div`
   display: flex;
   justify-content: center;
-  button {
-    cursor: pointer;
-    display: block;
-    width: 18px;
-    margin-left: 10px;
-    border: none;
-    background: none;
-  }
-  > div {
-    display: flex;
-    justify-content: center;
-  }
+`;
+
+const EditBtn = styled.button`
+  cursor: pointer;
+  display: block;
+  width: 18px;
+  margin-left: 10px;
+  border: none;
+  background: none;
+`;
+
+const EditBtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 function UserTitle() {
@@ -91,34 +94,34 @@ function UserTitle() {
 
   return (
     <UserTitleWrapper>
-      <img src={state.avatarUrl} alt="" />
+      <AvatarImg src={state.avatarUrl} />
       <EditBox>
-        {!isEdit && <h1>{state.userName}</h1>}
+        {!isEdit && <EditName>{state.userName}</EditName>}
         {isEdit && (
-          <input
+          <EditInput
             type="text"
             value={editNameText}
             onChange={handNameChange}
             onKeyUp={inputKeySubmit}
           />
         )}
-        <EditBtn>
+        <EditBtnBox>
           {!isEdit && (
-            <button onClick={() => handEdit(true)}>
+            <EditBtn onClick={() => handEdit(true)}>
               <img src={edit} alt="" />
-            </button>
+            </EditBtn>
           )}
           {isEdit && (
-            <div>
-              <button onClick={() => submitUserName()}>
+            <EditBtnWrapper>
+              <EditBtn onClick={() => submitUserName()}>
                 <img src={checkMark} alt="" />
-              </button>
-              <button onClick={() => handEdit(false)}>
+              </EditBtn>
+              <EditBtn onClick={() => handEdit(false)}>
                 <img src={cancelButton} alt="" />
-              </button>
-            </div>
+              </EditBtn>
+            </EditBtnWrapper>
           )}
-        </EditBtn>
+        </EditBtnBox>
       </EditBox>
     </UserTitleWrapper>
   );

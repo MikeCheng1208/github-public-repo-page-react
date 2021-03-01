@@ -5,44 +5,41 @@ import context from "../../Context";
 import { useScrollBottom } from "../../hooks/useScrollBottom";
 import Loading from "../Loading";
 
-const CardBox = styled.ul`
-  > li {
-    display: block;
-    width: 500px;
-    margin: 0 auto 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 3px 5px rgba(rgb(71, 71, 71), 0.1);
-    h1,
-    h2,
-    a,
-    div {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    }
-    > h1 {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    > h2 {
-      color: #7f7f7f;
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-    > a {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 14px;
-      color: #888;
-      text-decoration: none;
-      margin-bottom: 5px;
-      &:hover {
-        color: #3d638a;
-        font-weight: bold;
-      }
-    }
+const CardItem = styled.li`
+  display: block;
+  width: 500px;
+  margin: 0 auto 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 3px 5px rgba(rgb(71, 71, 71), 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+`;
+
+const CardTitle = styled.h1`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+
+const CardDescription = styled.h2`
+  color: #7f7f7f;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 500;
+`;
+
+const CardLink = styled.a`
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  margin-bottom: 5px;
+  &:hover {
+    color: #3d638a;
+    font-weight: bold;
   }
 `;
 
@@ -53,11 +50,12 @@ const StarBox = styled.div`
   height: 100%;
   font-weight: bold;
   color: #888;
-  > img.star_icon {
-    display: block;
-    width: 20px;
-    margin-right: 4px;
-  }
+`;
+
+const StarIcon = styled.img`
+  display: block;
+  width: 20px;
+  margin-right: 4px;
 `;
 
 function ReposList() {
@@ -73,26 +71,26 @@ function ReposList() {
 
   return (
     <Fragment>
-      <CardBox>
+      <ul>
         {state.repoList.map((item) => (
-          <li key={item.id}>
-            <h1>{item.name}</h1>
-            <h2>{item.description}</h2>
-            <a
+          <CardItem key={item.id}>
+            <CardTitle>{item.name}</CardTitle>
+            <CardDescription>{item.description}</CardDescription>
+            <CardLink
               className="url"
               rel="noreferrer"
               href={item.html_url}
               target="_blank"
             >
               {item.html_url}
-            </a>
+            </CardLink>
             <StarBox>
-              <img className="star_icon" src={star} alt="" />
+              <StarIcon src={star} />
               {item.stargazers_count}
             </StarBox>
-          </li>
+          </CardItem>
         ))}
-      </CardBox>
+      </ul>
       {state.page < state.allPage && <Loading></Loading>}
     </Fragment>
   );
