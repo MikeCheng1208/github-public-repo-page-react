@@ -32,11 +32,9 @@ export const DataProvider = ({ children }) => {
   };
 
   const nextPage = () => {
-    let i = state.page;
-    i++;
     setState((state) => ({
       ...state,
-      page: i,
+      page: state.page + 1,
     }));
   };
 
