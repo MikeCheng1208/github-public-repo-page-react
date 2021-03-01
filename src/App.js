@@ -1,8 +1,24 @@
-import "./css/App.css";
 import UserTitle from "./components/UserTitle";
 import ReposList from "./components/ReposList";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { DataProvider } from "./Context";
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    background-color: #e5e5e5;
+    padding-bottom: 10px;
+  }
+
+  button:focus {
+    outline: 0;
+  }
+`;
 
 const Home = styled.div`
   width: 100%;
@@ -11,6 +27,7 @@ const Home = styled.div`
 function App() {
   return (
     <DataProvider>
+      <GlobalStyle />
       <Home>
         <UserTitle></UserTitle>
         <ReposList></ReposList>

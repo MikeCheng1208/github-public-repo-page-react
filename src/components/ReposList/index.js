@@ -20,12 +20,12 @@ const CardBox = styled.ul`
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
         Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     }
-    > h1.title {
+    > h1 {
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 5px;
     }
-    > h2.description {
+    > h2 {
       color: #7f7f7f;
       font-size: 16px;
       margin-bottom: 5px;
@@ -69,15 +69,15 @@ function ReposList() {
   useEffect(() => {
     if (!isBottom) return;
     nextPage();
-  }, [isBottom]);
+  }, [isBottom]); // eslint-disable-line
 
   return (
     <Fragment>
       <CardBox>
         {state.repoList.map((item) => (
           <li key={item.id}>
-            <h1 className="title">{item.name}</h1>
-            <h2 className="description">{item.description}</h2>
+            <h1>{item.name}</h1>
+            <h2>{item.description}</h2>
             <a
               className="url"
               rel="noreferrer"

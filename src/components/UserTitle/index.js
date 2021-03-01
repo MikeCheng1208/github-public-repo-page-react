@@ -65,10 +65,9 @@ function UserTitle() {
   };
 
   useEffect(() => {
-    if (isEdit) {
-      setEditNameText(state.userName);
-    }
-  }, [isEdit]);
+    if (!isEdit) return;
+    setEditNameText(state.userName);
+  }, [isEdit]); // eslint-disable-line
 
   const handNameChange = (e) => {
     setEditNameText(e.target.value);
@@ -88,7 +87,7 @@ function UserTitle() {
 
   useEffect(() => {
     setUserData(editNameText);
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <UserTitleWrapper>

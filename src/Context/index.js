@@ -73,7 +73,7 @@ export const DataProvider = ({ children }) => {
     if (!state.userName) return;
     if (state.allPage === 0) return;
     fetchRepos(state.userName);
-  }, [state.userName, state.page, state.allPage]);
+  }, [state.userName, state.page, state.allPage]); // eslint-disable-line
 
   // 取得Repo列表
   const fetchRepos = async (name) => {
