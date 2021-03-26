@@ -2,17 +2,6 @@
   "name": "github-public-repo-page-react",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.7.3",
-    "axios": "^0.21.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.2.1",
-    "web-vitals": "^1.1.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -37,9 +26,25 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.3",
+    "axios": "^0.21.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.3",
+    "styled-components": "^5.2.1",
+    "web-vitals": "^1.1.0"
+  },
   "devDependencies": {
+    "@types/node": "^14.14.36",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
     "eslint": "^7.20.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "mddir": "^1.1.1"
+    "mddir": "^1.1.1",
+    "typescript": "^4.2.3"
   }
 }
