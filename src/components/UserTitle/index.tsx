@@ -1,70 +1,23 @@
 import { useState, useContext, useEffect } from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 import edit from "../../assets/edit.svg";
 import checkMark from "../../assets/check-mark.svg";
 import cancelButton from "../../assets/cancel-button.svg";
 import context from "../../Context";
+import { MouseEventTarget, KeyEvent } from "./interface";
 
-const UserTitleWrapper = styled.div``;
-
-const AvatarImg = styled.img`
-  display: block;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 65px auto 20px auto;
-  border: 5px solid #fff;
-`;
-
-const EditBox = styled.div`
-  width: 310px;
-  margin: 0 auto 40px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const EditName = styled.h1`
-  display: block;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: #2c3e50;
-  font-size: 25px;
-  text-align: center;
-`;
-const EditInput = styled.input`
-  width: 100%;
-  height: 30px;
-  padding-left: 5px;
-  font-size: 18px;
-`;
-
-const EditBtnBox = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const EditBtn = styled.button`
-  cursor: pointer;
-  display: block;
-  width: 18px;
-  margin-left: 10px;
-  border: none;
-  background: none;
-`;
-
-const EditBtnWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+import { 
+  UserTitleWrapper, AvatarImg, EditBox, EditName, EditInput, EditBtnBox, EditBtn, EditBtnWrapper 
+} from "./Styled.ts";
 
 function UserTitle() {
   const store = useContext(context);
   const { state, setUserData } = store;
-  const [editNameText, setEditNameText] = useState("MikeCheng1208");
-  const [isEdit, setIsEdit] = useState(false);
+  const [editNameText, setEditNameText] = useState<string>("MikeCheng1208");
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
-  const handEdit = (bool) => {
-    setIsEdit(bool);
+  const handEdit = (bool: boolean):void => {
+    setIsEdit(bool as boolean);
   };
 
   useEffect(() => {
@@ -72,11 +25,11 @@ function UserTitle() {
     setEditNameText(state.userName);
   }, [isEdit]); // eslint-disable-line
 
-  const handNameChange = (e) => {
+  const handNameChange = (e: MouseEventTarget) => {
     setEditNameText(e.target.value);
   };
 
-  const inputKeySubmit = (e) => {
+  const inputKeySubmit:React.KeyboardEventHandler<HTMLInputElement> | undefined = (e: KeyEvent) => {
     if (e.key === "Enter") {
       submitUserName();
     }

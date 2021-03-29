@@ -8,6 +8,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "resolve": {
+    "extensions": [".js", ".json", ".ts", ".tsx"]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
