@@ -1,12 +1,17 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, ReactNode } from "react";
 import { apiGetUserData, apiGetRepos } from "../api";
 import notFound from "../assets/notFound.jpg";
+import { StoreType, ArrType } from "./interface";
 
-const context = createContext();
+type Props = {
+  children: ReactNode
+};
+
+
+const context = createContext({} as StoreType);
 export default context;
-
-export const DataProvider = ({ children }) => {
-  const [state, setState] = useState({
+export const DataProvider = ({ children }:Props) => {
+  const [state, setState] = useState<ArrType>({
     userName: "",
     repoList: [],
     avatarUrl: "",
@@ -17,7 +22,7 @@ export const DataProvider = ({ children }) => {
     allPage: 0,
   });
 
-  const setUserData = (user) => {
+  const setUserData = (user: string) => {
     setState((state) => ({
       ...state,
       userName: user,
@@ -44,7 +49,7 @@ export const DataProvider = ({ children }) => {
   }, [state.userName]);
 
   // 取得user資料
-  const fetchUserData = async (name) => {
+  const fetchUserData = async (name: string) => {
     try {
       const ud = await apiGetUserData(name);
       const { login, avatar_url, public_repos, updated_at } = ud.data;
@@ -74,16 +79,16 @@ export const DataProvider = ({ children }) => {
   }, [state.userName, state.page, state.allPage]); // eslint-disable-line
 
   // 取得Repo列表
-  const fetchRepos = async (name) => {
+  const fetchRepos = async (names: string) => {
     if (state.page > state.allPage) return;
-    const repos = await apiGetRepos(name, state.page, state.limit);
+    const repos =  await apiGetRepos(names, state.page, state.limit);
     setState((state) => ({
       ...state,
-      repoList: [...state.repoList, ...repos.data],
+      repoList: [...state.repoList, ...repos.data], 
     }));
   };
 
-  const value = {
+  const value: StoreType= {
     state,
     setUserData,
     nextPage,

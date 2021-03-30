@@ -5,13 +5,13 @@ import checkMark from "../../assets/check-mark.svg";
 import cancelButton from "../../assets/cancel-button.svg";
 import context from "../../Context";
 import { MouseEventTarget, KeyEvent } from "./interface";
-
+import { StoreType } from "../../Context/interface";
 import { 
   UserTitleWrapper, AvatarImg, EditBox, EditName, EditInput, EditBtnBox, EditBtn, EditBtnWrapper 
-} from "./Styled.ts";
+} from "./style";
 
 function UserTitle() {
-  const store = useContext(context);
+  const store = useContext(context) as StoreType;
   const { state, setUserData } = store;
   const [editNameText, setEditNameText] = useState<string>("MikeCheng1208");
   const [isEdit, setIsEdit] = useState<boolean>(false);

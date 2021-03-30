@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { debounce } from "../lib/Debounce";
 
 export const useScrollBottom = () => {
-  const [isBottom, setIsBottom] = useState(false);
+  const [isBottom, setIsBottom] = useState<boolean>(false);
 
   // debounce
   useEffect(() => {
-    const scrollBottom = debounce(() => {
+    const scrollBottom: any = debounce(() => {
       const {
         scrollHeight,
         scrollTop,

@@ -1,5 +1,5 @@
 import UserTitle from "./components/UserTitle/";
-import ReposList from "./components/ReposList";
+import ReposList from "./components/ReposList/";
 import styled, { createGlobalStyle } from "styled-components";
 import { DataProvider } from "./Context";
 
